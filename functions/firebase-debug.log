@@ -1,0 +1,129 @@
+[debug] [2018-06-04T14:23:09.220Z] ----------------------------------------------------------------------
+[debug] [2018-06-04T14:23:09.223Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --project someapp-7f2f1
+[debug] [2018-06-04T14:23:09.223Z] CLI Version:   3.18.5
+[debug] [2018-06-04T14:23:09.223Z] Platform:      darwin
+[debug] [2018-06-04T14:23:09.223Z] Node Version:  v8.9.1
+[debug] [2018-06-04T14:23:09.224Z] Time:          Mon Jun 04 2018 15:23:09 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:09.224Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-04T14:23:09.243Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-04T14:23:09.243Z] > authorizing via signed-in user
+[debug] [2018-06-04T14:23:09.246Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/someapp-7f2f1  
+  
+ Mon Jun 04 2018 15:23:09 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:09.865Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-04T14:23:09.867Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/someapp-7f2f1/tokens  
+  
+ Mon Jun 04 2018 15:23:09 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:10.357Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'someapp-7f2f1'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[info] i  database: checking rules syntax...
+[debug] [2018-06-04T14:23:16.056Z] >>> HTTP REQUEST PUT https://someapp-7f2f1.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+} 
+ Mon Jun 04 2018 15:23:16 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:16.615Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database someapp-7f2f1 is valid
+[debug] [2018-06-04T14:23:16.618Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.12.1",
+    "firebase-functions": "^1.0.3",
+    "twilio": "^3.0.0-rc.13"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-promise": "^3.6.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-06-04T14:23:16.620Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/someapp-7f2f1?view=CONSUMER_VIEW  
+  
+ Mon Jun 04 2018 15:23:16 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:16.620Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/someapp-7f2f1?view=CONSUMER_VIEW  
+  
+ Mon Jun 04 2018 15:23:16 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:17.633Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-06-04T14:23:17.718Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-04T14:23:17.720Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/someapp-7f2f1  
+  
+ Mon Jun 04 2018 15:23:17 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:18.563Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-04T14:23:18.564Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/270598071563:getServerAppConfig  
+  
+ Mon Jun 04 2018 15:23:18 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:19.074Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[info] i  functions: packaged functions (56.02 KB) for uploading
+[debug] [2018-06-04T14:23:20.605Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/someapp-7f2f1/locations/us-central1/functions:generateUploadUrl  
+  
+ Mon Jun 04 2018 15:23:20 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:20.899Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-04T14:23:20.900Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-27cb87e7-cf76-4aeb-85b3-00cb2f47e0b1/892e9fee-eadb-4b6a-b2cd-110573db42c4.zip?GoogleAccessId=270598071563@cloudservices.gserviceaccount.com&Expires=1528124000&Signature=RYNi6gPR%2F7KsoZTYUFGaAIN1p7MsXUfen2kgZQRtD2mbgiItgEHtWjvl%2BhBaQti7dTJr6%2FRuz5QJXa%2FnFzWB5QSz8Gt1sD%2F9JPcz8EiJcHTfCL0yCy89Fu6xBCpXrkF4XoZ81FtRQQfFoEsB3U4%2F0X8IuYyhhFUQB%2FtB9s84SXIoiNU9LLRU%2FuBzlC6DOV4YAEroRKFibBu5ZS1Chk46QWu8m7f0Ini39lxGBmXF%2Fv3K9vncIeNaPj6Ds1B8G1oAhko6QgvAHzBYVowsG7upLTykQFkJUClCh6SRV2TJJrbOt9WNKs%2F%2BuNqzlowoF0%2FKYvW2luuJf4mkoR8k2zt%2BLA%3D%3D  
+ ReadStream {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 65536,
+     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+     length: 57364,
+     pipes: null,
+     pipesCount: 0,
+     flowing: null,
+     ended: true,
+     endEmitted: false,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: true,
+     readableListening: false,
+     resumeScheduled: false,
+     destroyed: false,
+     defaultEncoding: 'utf8',
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: true,
+  domain: null,
+  _events: { end: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  path: '/var/folders/lh/lppy0ffx0b57mgmdy1szxjg80000gn/T/firebase-functions-62931j50s2zjJM0Gf.zip',
+  fd: 19,
+  flags: 'r',
+  mode: 438,
+  start: undefined,
+  end: undefined,
+  autoClose: true,
+  pos: undefined,
+  bytesRead: 57364 } 
+ Mon Jun 04 2018 15:23:20 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:21.429Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-06-04T14:23:21.457Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/someapp-7f2f1/uploads/-LEAAZjdrklxhZbyCdpP?fileCount=2&message=  
+  
+ Mon Jun 04 2018 15:23:21 GMT+0100 (BST)
+[debug] [2018-06-04T14:23:48.360Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-04T14:23:48.361Z] [hosting] .tgz uploaded successfully, waiting for extraction

@@ -4,6 +4,7 @@ const functions = require('firebase-functions');
 const createUser = require('./create_user');
 const serviceAccount = require('./service_account.json');
 const requestSomeApp = require('./request_someapp');
+const verifyOneTimePassword = require('./verify_one_time_password');
 // 4aXYrM0Vem34v31VzP92XMyXwH39CBermUDbC5nu
 // +44 1784 605447
 
@@ -17,5 +18,6 @@ admin.initializeApp({
 
 exports.createUser = functions.https.onRequest(createUser);
 exports.requestSomeApp = functions.https.onRequest(requestSomeApp);
+exports.verifyOneTimePassword = functions.https.onRequest(verifyOneTimePassword);
 
 

@@ -1,5 +1,6 @@
 /* eslint-disable */
 const admin = require('firebase-admin');
+const twilio = require('./twillio');
 
 module.exports = function (req, res) {
     if(!req.body.phone) {
@@ -10,7 +11,25 @@ module.exports = function (req, res) {
 
     admin.auth().getUser(phone)
         .then(userRecord => {
+            const code = Math.floor((Math.random() * 8999 + 1000));
+            // Sending text message to a user
+            twilio.messages.create({
+                body: 'Your code is ' + code,
+                to: phone,
+                from: '+441784605447'
+            }, (err) => {
+                if(err) { return res.status(500).send(err)}
 
+                admin.database().ref('users/' + phone)
+                    .update({
+                        code: code,
+                        codeValid: true
+                    }, () => {
+                        res.send({ success: true });
+                    })
+            })
         })
-        .catch()
+        .catch((err) => {
+            res.status(422).send({ error: 'User not found'})
+        })
 };
